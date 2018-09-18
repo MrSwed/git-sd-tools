@@ -1,0 +1,16 @@
+#!/usr/bin/env bash 
+
+links="${1}"  
+option="${2}"
+
+case ${links} in
+ "" | "--help" | "-h" | "/?" | "-?" )
+ echo "Usage:  $0 <lins list> [confirm]"
+ ;;
+esac
+
+for a in $links
+do 
+ echo git remote add `echo $a | awk -F "/" '{print $4}'` $a
+
+done
