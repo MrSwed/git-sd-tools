@@ -24,11 +24,11 @@ if [ ! -z "$version" ]
 then
 echo "Possible add tag:
 "
- read -p " > git tag 'v$version' [y/n]? " -n 1 -r
+ read -p " > git tag 'v.$version' [y/n]? " -n 1 -r
  echo    # (optional) move to a new line
  if [[ $REPLY =~ ^[Yy]$ ]]
  then
-  git tag "v$version"
+  git tag "v.$version"
  fi
 fi
 
