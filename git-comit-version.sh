@@ -36,5 +36,5 @@ fi
  echo    # (optional) move to a new line
  if [[ $REPLY =~ ^[Yy]$ ]]
  then
-  git push --tags --set-upstream origin
+  git push --tags --set-upstream origin master
  fi
