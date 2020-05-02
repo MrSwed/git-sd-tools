@@ -6,7 +6,7 @@ pattern="(version[\:\s]+(\d+\.?)+|description\:)"
 pattern2="([\d]+[\.]?)+"
 foundedVersions=`grep  -iP "$pattern" *.php`
 version=`echo "$foundedVersions"  | grep -Po "$pattern2"`
-commitdate=`ls -tl --full-time * | head -1 | awk '{print $6,$7,$8}'`
+
 
 echo "Founded Versions and Descriptions by 
 Pattern: $pattern 
@@ -17,7 +17,7 @@ $foundedVersions
 
 git add *
 git add -u
-git commit -m "$foundedVersions" --date "$commitdate"
+git commit -m "$foundedVersions" --date="`stat -c "%y" * | sort -n -k 2 | head -1`"
 
 
 if [ ! -z "$version" ]
