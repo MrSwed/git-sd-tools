@@ -4,7 +4,7 @@
 
 pattern="(version[\:\s]+(\d+\.?)+|description\:)"
 pattern2="([\d]+[\.]?)+"
-foundedVersions=`grep  -iP "$pattern" *.php`
+foundedVersions=`grep  -iP "$pattern" *.php || grep  -iP "$pattern" ./style.css || echo no version found`
 version=`echo "$foundedVersions"  | grep -Po "$pattern2"`
 
 
@@ -14,6 +14,10 @@ Pattern: $pattern
 Result to commit message:
 $foundedVersions
 "
+ read -p "Continue [y/n]? " -n 1 -r
+ echo    # (optional) move to a new line
+ if [[ $REPLY =~ ^[Yy]$ ]]
+ then
 
 git add *
 git add -u
@@ -38,3 +42,4 @@ fi
  then
   git push --tags --set-upstream origin master
  fi
+fi
