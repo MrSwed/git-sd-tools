@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export LANGUAGE=en_US
+
 if [ "$1" == "changed" ]; then
  $0 2>&1 |  grep -vE '\[up to date\]|^Fetching origin$|^From.*$'
 else
